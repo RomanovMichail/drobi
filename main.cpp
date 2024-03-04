@@ -23,26 +23,30 @@ class Franction{
             int full = std::stoi( _str ), real = 0, total = 0; bool flag = false;
             for (int i = 0; i<_str.length(); i++){
                 if (flag == true){
-                    char s = _str[i]; real+=real*10+(int(s)-48); total+=1;}
+                    char s = _str[i]; 
+                    real=real*10+(int(s)-48);
+                    total+=1;}
                 if (_str[i] == '.'){
                     flag = true;}}
-            full = full*pow(10, total)+real; real = pow(10, total);
+            full = full*pow(10, total)+real; 
+            real = pow(10, total);
             int* mas = new int[2]; mas[0] = full, mas[1] = real;
             std::cout << "Вещественное число "; if (_znak == true) std::cout << "-";
             if (real == 1){
                 std::cout << _number << " преобразуется в дробное число : ";
                 if (_znak == true) std::cout << "-";
-                std::cout << mas[0];}
+                std::cout << mas[0]<< std::endl;}
             else{
                 reduction_franction(mas);
                 std::cout << _number << " преобразуется в дробное число: ";
                 if (_znak == true) std::cout << "-";
-                std::cout << mas[0] << "/" << mas[1] << std::endl;}}
+                std::cout << mas[0] << "/" << mas[1] << std::endl;}
+            delete[] mas;}
 };
 
 int main(){
-    Franction franc = Franction(27.1);
+    Franction franc = Franction(257.16);
     franc.real_is_franction();
-    Franction franc2 = Franction(257.16);
+    Franction franc2 = Franction(2.1);
     franc2.real_is_franction();
 }
